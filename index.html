@@ -487,6 +487,39 @@ body {
   background-color: #128C7E;
 }
 
+.about-container {
+  max-width: 800px;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.profile-image img {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: 4px solid var(--accent);
+}
+
+.about-content {
+  text-align: center;
+}
+
+.about-content h3 {
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+.about-content p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
 @media (max-width: 768px) {
   .hamburger {
     display: block;
@@ -555,7 +588,7 @@ body {
     <a href="#video">Video</a>
     <a href="#fotografia">Fotografía</a>
     <a href="#social">Social Media</a>
-    <a href="#contacto">Contacto</a>
+    <a href="#acerca">Acerca de</a>
   </nav>
 </header>
 
@@ -641,8 +674,8 @@ body {
   <div class="portfolio-grid">
     <div class="portfolio-item" data-video="https://github.com/malelemdz/portfolio/raw/refs/heads/main/video/edicion_corto.mp4">
       <div class="portfolio-img">
-		<img src="https://github.com/malelemdz/portfolio/blob/main/images/video/thumbnail_edicio%CC%81n1.png?raw=true" alt="Project thumbnail" width="300" height="250">
-		</div>
+        <img src="https://github.com/malelemdz/portfolio/blob/main/images/video/thumbnail_edicio%CC%81n1.png?raw=true" alt="Project thumbnail" width="300" height="250">
+      </div>
       <div class="portfolio-overlay">
         <h3>Cortometraje</h3>
         <p>Producción de un corto creativo</p>
@@ -650,8 +683,8 @@ body {
     </div>
     <div class="portfolio-item" data-video="https://example.com/video2.mp4">
       <div class="portfolio-img">
-		<img src="https://example.com/thumbnail6.jpg" alt="Project thumbnail" width="300" height="250">
-		</div>
+        <img src="https://example.com/thumbnail6.jpg" alt="Project thumbnail" width="300" height="250">
+      </div>
       <div class="portfolio-overlay">
         <h3>Vlog de Viaje</h3>
         <p>Documentación de una aventura</p>
@@ -734,34 +767,21 @@ body {
   </div>
 </section>
 
-<section class="contact" id="contacto">
+<section class="contact" id="acerca">
   <h2>¿Trabajamos juntos?</h2>
   <p>Contacta conmigo para dar vida a tu próximo proyecto</p>
-  <form class="contact-form">
-    <div class="form-group">
-      <input type="text" id="name" name="name" required placeholder="Nombre completo">
+  
+  <div class="about-container">
+    <div class="profile-image">
+      <img src="https://github.com/malelemdz/portfolio/blob/main/images/perfil.jpg?raw=true" alt="Foto de perfil" width="200" height="200">
     </div>
-    <div class="form-group">
-      <input type="email" id="email" name="email" required placeholder="Correo electrónico">
+    <div class="about-content">
+      <h3>Oliver Malele</h3>
+      <p>Soy un apasionado creador de contenido digital con experiencia en branding, diseño, video y fotografía. Mi objetivo es ayudar a dar vida a las ideas y proyectos de mis clientes, creando contenido visual impactante y memorable.</p>
+      <p>Estoy muy entusiasmado por la posibilidad de colaborar contigo y aportar mi creatividad y experiencia a tu próximo proyecto. ¡Hagamos algo increíble juntos!</p>
+      <p>Escríbeme a través de WhastApp o mis redes sociales.</p>
     </div>
-    <div class="form-group">
-      <input type="tel" id="whatsapp" name="whatsapp" required placeholder="WhatsApp">
-    </div>
-    <div class="form-group">
-      <select id="service" name="service" required>
-        <option value="">Selecciona un servicio</option>
-        <option value="branding">Branding</option>
-        <option value="diseno">Diseño para Redes Sociales</option>
-        <option value="video">Edición de Video</option>
-        <option value="fotografia">Fotografía</option>
-        <option value="social">Social Media</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <textarea id="message" name="message" required placeholder="Cuéntame sobre tu proyecto"></textarea>
-    </div>
-    <button type="submit" class="submit-btn">Enviar mensaje</button>
-  </form>
+  </div>
 </section>
 
 <footer class="footer">
@@ -923,30 +943,6 @@ galleryModal.addEventListener('click', (e) => {
   if (e.target === galleryModal) {
     galleryModal.classList.remove('active');
   }
-});
-
-// Updated form handling code
-const contactForm = document.querySelector('.contact-form');
-contactForm.addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  const formData = new FormData(this);
-  const data = Object.fromEntries(formData);
-  
-  const emailBody = `
-    Name: ${data.name}
-    Email: ${data.email}
-    WhatsApp: ${data.whatsapp}
-    Service: ${data.service}
-    Message: ${data.message}
-  `;
-  
-  const mailtoLink = `mailto:malelemdz@gmail.com?subject=New Contact Form Submission&body=${encodeURIComponent(emailBody)}`;
-  
-  window.location.href = mailtoLink;
-  
-  alert('¡Gracias! Redirigiendo al cliente de correo...');
-  this.reset();
 });
 
 // Hamburger menu functionality
