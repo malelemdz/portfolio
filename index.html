@@ -1,4 +1,7 @@
-<html><head><base href=""/>
+<html lang="es">
+<head>
+<base href=""/>
+<link rel="icon" type="image/png" href="https://github.com/malelemdz/portfolio/blob/main/logo/ico.png?raw=true">
 <title>Malelemdz | Portfolio</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -216,14 +219,14 @@ body {
 
 .portfolio-section {
   padding: 6rem 2rem 4rem;
-  background: #041E3E; /* Darker blue that matches the palette */
+  background: #041E3E;
   color: var(--white);
 }
 
 .section-title {
   text-align: center;
   margin-bottom: 3rem;
-  color: var(--accent); /* Using the accent color for titles */
+  color: var(--accent);
 }
 
 .portfolio-grid {
@@ -252,7 +255,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(3, 205, 186, 0.9); /* Using accent color with transparency */
+  background: rgba(3, 205, 186, 0.9);
   color: var(--primary);
   padding: 1rem;
   transform: translateY(100%);
@@ -813,24 +816,27 @@ nextBtn.addEventListener('click', () => {
   }
 });
 
-// Existing close handlers remain the same
-galleryClose.addEventListener('click', () => {
-  galleryModal.classList.remove('active');
-});
-
-galleryModal.addEventListener('click', (e) => {
-  if (e.target === galleryModal) {
-    galleryModal.classList.remove('active');
-  }
-});
-
-// Form handling
+// Updated form handling code
 const contactForm = document.querySelector('.contact-form');
 contactForm.addEventListener('submit', function(e) {
   e.preventDefault();
+  
   const formData = new FormData(this);
-  console.log('Form submitted:', Object.fromEntries(formData));
-  alert('¡Gracias! Tu mensaje ha sido enviado.');
+  const data = Object.fromEntries(formData);
+  
+  const emailBody = `
+    Name: ${data.name}
+    Email: ${data.email}
+    WhatsApp: ${data.whatsapp}
+    Service: ${data.service}
+    Message: ${data.message}
+  `;
+  
+  const mailtoLink = `mailto:malelemdz@gmail.com?subject=New Contact Form Submission&body=${encodeURIComponent(emailBody)}`;
+  
+  window.location.href = mailtoLink;
+  
+  alert('¡Gracias! Redirigiendo al cliente de correo...');
   this.reset();
 });
 </script>
