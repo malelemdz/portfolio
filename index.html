@@ -49,6 +49,23 @@ body {
   object-fit: contain;
 }
 
+.hamburger {
+  display: none;
+  cursor: pointer;
+  padding: 10px;
+  background: none;
+  border: none;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px 0;
+  background: var(--white);
+  transition: all 0.3s ease;
+}
+
 .nav {
   display: flex;
   gap: 2rem;
@@ -84,13 +101,13 @@ body {
 }
 
 .hero-content h1 {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
 .hero-content p {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 500;
   opacity: 0.9;
 }
@@ -244,8 +261,13 @@ body {
   background: var(--primary);
 }
 
+.portfolio-item {
+  aspect-ratio: 4/3;
+  height: auto;
+}
+
 .portfolio-img img {
-  width: 100%;
+  aspect-ratio: 4/3;
   height: 100%;
   object-fit: cover;
 }
@@ -444,6 +466,43 @@ body {
   transform: scale(1.1);
   background-color: #128C7E;
 }
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav {
+    display: none;
+    position: fixed;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    background: var(--primary);
+    flex-direction: column;
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  .nav.active {
+    display: flex;
+  }
+
+  .nav a {
+    padding: 15px 0;
+  }
+
+  .portfolio-item {
+    aspect-ratio: 4/3;
+    height: auto;
+  }
+
+  .portfolio-img img {
+    aspect-ratio: 4/3;
+    height: 100%;
+    object-fit: cover;
+  }
+}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
@@ -453,6 +512,11 @@ body {
   <a href="#inicio">
     <img src="https://github.com/malelemdz/portfolio/blob/main/logo/logo.png?raw=true" alt="Malelemdz logo" class="logo" width="50" height="50">
   </a>
+  <button class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
   <nav class="nav">
     <a href="#inicio">Inicio</a>
     <a href="#branding">Branding</a>
@@ -561,7 +625,7 @@ body {
     </div>
     <div class="portfolio-item" data-video="https://example.com/video3.mp4">
       <div class="portfolio-img">
-		<img src="https://example.com/thumbnail6.jpg" alt="Project thumbnail" width="300" height="250"></div>
+        <img src="https://example.com/thumbnail6.jpg" alt="Project thumbnail" width="300" height="250"></div>
       <div class="portfolio-overlay">
         <h3>Video Corporativo</h3>
         <p>Presentación de empresa</p>
@@ -838,6 +902,27 @@ contactForm.addEventListener('submit', function(e) {
   
   alert('¡Gracias! Redirigiendo al cliente de correo...');
   this.reset();
+});
+
+// Hamburger menu functionality
+const hamburger = document.querySelector('.hamburger');
+const nav = document.querySelector('.nav');
+
+hamburger.addEventListener('click', () => {
+  nav.classList.toggle('active');
+  
+  // Animate hamburger
+  const spans = hamburger.querySelectorAll('span');
+  spans.forEach(span => span.classList.toggle('active'));
+});
+
+// Close menu when clicking a link
+document.querySelectorAll('.nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    nav.classList.remove('active');
+    const spans = hamburger.querySelectorAll('span');
+    spans.forEach(span => span.classList.remove('active'));
+  });
 });
 </script>
 
