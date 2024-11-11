@@ -259,17 +259,15 @@ body {
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0,0,0,0.3);
   background: var(--primary);
-}
-
-.portfolio-item {
   aspect-ratio: 4/3;
   height: auto;
 }
 
 .portfolio-img img {
-  aspect-ratio: 4/3;
+  width: 100%;
   height: 100%;
   object-fit: cover;
+  aspect-ratio: 4/3;
 }
 
 .portfolio-overlay {
@@ -877,6 +875,17 @@ nextBtn.addEventListener('click', () => {
   if (currentImageIndex < currentImages.length - 1) {
     currentImageIndex++;
     showCurrentImage();
+  }
+});
+
+// Fix gallery close functionality
+galleryClose.addEventListener('click', () => {
+  galleryModal.classList.remove('active');
+});
+
+galleryModal.addEventListener('click', (e) => {
+  if (e.target === galleryModal) {
+    galleryModal.classList.remove('active');
   }
 });
 
