@@ -1,5 +1,4 @@
-<!doctype html>
-<html><head><base href="/" />
+<html><head><base href=""/>
 <title>Malelemdz | Portfolio</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,9 +35,15 @@ body {
   z-index: 1000;
 }
 
+.header a {
+  text-decoration: none;
+  display: inline-block;
+}
+
 .logo {
   width: 50px;
   height: 50px;
+  object-fit: contain;
 }
 
 .nav {
@@ -75,6 +80,18 @@ body {
   z-index: 2;
 }
 
+.hero-content h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 2rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
 .hero-video {
   position: absolute;
   top: 0;
@@ -82,7 +99,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.3;
+  opacity: 0.2;
 }
 
 .skills-container {
@@ -199,13 +216,14 @@ body {
 
 .portfolio-section {
   padding: 6rem 2rem 4rem;
-  background: var(--white);
+  background: #041E3E; /* Darker blue that matches the palette */
+  color: var(--white);
 }
 
 .section-title {
   text-align: center;
   margin-bottom: 3rem;
-  color: var(--primary);
+  color: var(--accent); /* Using the accent color for titles */
 }
 
 .portfolio-grid {
@@ -219,7 +237,8 @@ body {
   position: relative;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  background: var(--primary);
 }
 
 .portfolio-img img {
@@ -233,8 +252,8 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(2, 19, 42, 0.9);
-  color: var(--white);
+  background: rgba(3, 205, 186, 0.9); /* Using accent color with transparency */
+  color: var(--primary);
   padding: 1rem;
   transform: translateY(100%);
   transition: transform 0.3s;
@@ -242,6 +261,15 @@ body {
 
 .portfolio-item:hover .portfolio-overlay {
   transform: translateY(0);
+}
+
+.portfolio-overlay h3 {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.portfolio-overlay p {
+  color: #02132A;
 }
 
 .footer {
@@ -419,10 +447,9 @@ body {
 <body>
 
 <header class="header">
-  <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    <rect width="100" height="100" fill="#02132A"/>
-    <text x="50" y="70" text-anchor="middle" fill="#03CDBA" font-size="50">ML</text>
-  </svg>
+  <a href="#inicio">
+    <img src="https://github.com/malelemdz/portfolio/blob/main/logo/logo.png?raw=true" alt="Malelemdz logo" class="logo" width="50" height="50">
+  </a>
   <nav class="nav">
     <a href="#inicio">Inicio</a>
     <a href="#branding">Branding</a>
@@ -435,7 +462,7 @@ body {
 </header>
 
 <section class="hero" id="inicio">
-  <img src="https://images.pexels.com/photos/8102680/pexels-photo-8102680.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="abstract creative background, modern design" class="hero-video">
+  <img src="https://github.com/malelemdz/portfolio/blob/main/background/pexels-ron-lach-8102676.jpg?raw=true" alt="abstract creative background, modern design" class="hero-video">
   <div class="hero-content">
     <h1>Malelemdz</h1>
     <p>Creador de contenido digital</p>
@@ -447,7 +474,7 @@ body {
   <div class="portfolio-grid">
     <div class="portfolio-item" data-gallery='["https://example.com/project1-1.jpg", "https://example.com/project1-2.jpg", "https://example.com/project1-3.jpg"]'>
       <div class="portfolio-img">
-        <img src="source/images/tumbnail1.jpg" alt="Project thumbnail" width="477" height="318">
+        <img src="https://github.com/malelemdz/portfolio/blob/main/images/branding/thumbnail_adymath.jpg?raw=true" alt="Project thumbnail" width="300" height="250">
       </div>
       <div class="portfolio-overlay">
         <h3>Marca Personal</h3>
@@ -480,7 +507,7 @@ body {
   <div class="portfolio-grid">
     <div class="portfolio-item" data-gallery='["https://example.com/project4-1.jpg", "https://example.com/project4-2.jpg", "https://example.com/project4-3.jpg"]'>
       <div class="portfolio-img">
-        <img src="https://example.com/thumbnail4.jpg" alt="Project thumbnail" width="300" height="250">
+        <img src="https://github.com/malelemdz/portfolio/blob/main/images/diseno/thumbnail_post-ig.jpg?raw=true" alt="Project thumbnail" width="300" height="250">
       </div>
       <div class="portfolio-overlay">
         <h3>Campaña Verano</h3>
@@ -513,7 +540,7 @@ body {
   <div class="portfolio-grid">
     <div class="portfolio-item" data-video="https://example.com/video1.mp4">
       <div class="portfolio-img">
-		<img src="https://example.com/thumbnail6.jpg" alt="Project thumbnail" width="300" height="250">
+		<img src="https://github.com/malelemdz/portfolio/blob/main/images/video/thumbnail_edicio%CC%81n1.png?raw=true" alt="Project thumbnail" width="300" height="250">
 		</div>
       <div class="portfolio-overlay">
         <h3>Cortometraje</h3>
@@ -545,7 +572,7 @@ body {
   <div class="portfolio-grid">
     <div class="portfolio-item" data-gallery='["https://example.com/project7-1.jpg", "https://example.com/project7-2.jpg", "https://example.com/project7-3.jpg"]'>
       <div class="portfolio-img">
-        <img src="https://example.com/thumbnail7.jpg" alt="Project thumbnail" width="300" height="250">
+        <img src="https://github.com/malelemdz/portfolio/blob/main/images/foto/thumbnail_foto1.png?raw=true" alt="Project thumbnail" width="300" height="250">
       </div>
       <div class="portfolio-overlay">
         <h3>Sesiones de Retrato</h3>
@@ -554,7 +581,7 @@ body {
     </div>
     <div class="portfolio-item" data-gallery='["https://example.com/project8-1.jpg", "https://example.com/project8-2.jpg", "https://example.com/project8-3.jpg"]'>
       <div class="portfolio-img">
-        <img src="https://raw.githubusercontent.com/olivermalele/malelemdz/refs/heads/main/source/images/thumbnail1.jpg" alt="Project thumbnail" width="300" height="250">
+        <img src="https://example.com/thumbnail8.jpg" alt="Project thumbnail" width="300" height="250">
       </div>
       <div class="portfolio-overlay">
         <h3>Eventos</h3>
@@ -578,7 +605,7 @@ body {
   <div class="portfolio-grid">
     <div class="portfolio-item" data-gallery='["https://example.com/project10-1.jpg", "https://example.com/project10-2.jpg", "https://example.com/project10-3.jpg"]'>
       <div class="portfolio-img">
-        <img src="https://example.com/thumbnail10.jpg" alt="Project thumbnail" width="300" height="250">
+        <img src="https://github.com/malelemdz/portfolio/blob/main/images/redes/thumbnail_redes1.png?raw=true" alt="Project thumbnail" width="300" height="250">
       </div>
       <div class="portfolio-overlay">
         <h3>Campaña de Lanzamiento</h3>
@@ -640,7 +667,7 @@ body {
   <div class="social-links">
     <a href="https://tiktok.com/@malelemdz" target="_blank">
       <svg class="social-icon" viewBox="0 0 24 24">
-        <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 015.2-1.74V11h3.45a4.83 4.83 0 003.77 3.73v-8.04z"/>
+        <path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0015.54 3h-3.09v12.4a2.592 2.592 0 01-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 004.3 1.38V7.3s-1.88.09-3.24-1.48z"/>
       </svg>
     </a>
     <a href="https://instagram.com/malelemdz" target="_blank">
@@ -660,7 +687,7 @@ body {
     </a>
   </div>
   <div class="copyright">
-    <p>&copy; 2023 Malelemdz. Todos los derechos reservados.</p>
+    <p>&copy; 2024 Malelemdz. Todos los derechos reservados.</p>
   </div>
 </footer>
 
@@ -693,9 +720,9 @@ body {
   </div>
 </div>
 
-<a href="https://wa.me/YOURNUMBERHERE" target="_blank" class="whatsapp-float">
+<a href="https://wa.me/59162643571" target="_blank" class="whatsapp-float">
   <svg viewBox="0 0 24 24" fill="white" width="35" height="35">
-    <path d="M12.01 2.019c-5.5 0-9.976 4.465-9.976 9.958 0 1.836.493 3.645 1.438 5.249l-1.462 4.776 4.901-1.434a9.912 9.912 0 0 0 5.1 1.459c5.5 0 9.977-4.464 9.977-9.958S17.51 2.019 12.01 2.019zm5.893 9.958c0-3.246-2.637-5.885-5.884-5.885s-5.884 2.639-5.884 5.885c0 1.066.283 2.109.82 3.025l-.536 1.74 1.791-.523a5.86 5.86 0 0 0 3.81 1.36c3.247 0 5.884-2.639 5.884-5.885zm-5.884-3.909c.649 0 1.18.531 1.18 1.18 0 .648-.531 1.18-1.18 1.18a1.182 1.182 0 0 1-1.18-1.18c0-.649.531-1.18 1.18-1.18zm-3.909 3.909c0-.649.531-1.18 1.18-1.18s1.18.531 1.18 1.18a1.182 1.182 0 0 1-1.18 1.18 1.182 1.182 0 0 1-1.18-1.18zm6.697 1.18c-.648 0-1.18-.531-1.18-1.18 0-.649.532-1.18 1.18-1.18.649 0 1.18.531 1.18 1.18 0 .649-.531 1.18-1.18 1.18z"/>
+    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
   </svg>
 </a>
 
