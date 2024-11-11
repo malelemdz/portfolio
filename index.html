@@ -1,0 +1,812 @@
+<!doctype html>
+<html><head><base href="/" />
+<title>Malelemdz | Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+:root {
+  --primary: #02132A;
+  --accent: #03CDBA;
+  --white: #FFFFFF;
+  --gray: #f5f5f5;
+  --gradient: linear-gradient(45deg, #02132A, #03CDBA);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: var(--white);
+  color: var(--primary);
+}
+
+.header {
+  background: var(--primary);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav a:hover {
+  color: var(--accent);
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: var(--white);
+  text-align: center;
+  padding-top: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+}
+
+.skills-container {
+  padding: 4rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  background: var(--gray);
+}
+
+.skill-card {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.skill-card:hover {
+  transform: translateY(-10px);
+}
+
+.skill-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+.skill-title {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.skill-description {
+  color: #666;
+}
+
+.contact {
+  padding: 6rem 2rem;
+  text-align: center;
+  background: var(--primary);
+  color: var(--white);
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  text-align: left;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.05);
+  color: var(--white);
+  font-size: 1rem;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+.contact-form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+
+.contact-form select option {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.contact-form textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.submit-btn {
+  background: var(--accent);
+  color: var(--primary);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  background: #04e6d1;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.portfolio-section {
+  padding: 6rem 2rem 4rem;
+  background: var(--white);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--primary);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.portfolio-item {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.portfolio-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portfolio-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(2, 19, 42, 0.9);
+  color: var(--white);
+  padding: 1rem;
+  transform: translateY(100%);
+  transition: transform 0.3s;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  transform: translateY(0);
+}
+
+.footer {
+  background: var(--primary);
+  padding: 2rem;
+  text-align: center;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  fill: var(--white);
+  transition: fill 0.3s;
+}
+
+.social-icon:hover {
+  fill: var(--accent);
+}
+
+.copyright {
+  color: var(--white);
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  width: calc(100vh * 9/16);
+  max-width: 90vw;
+  height: 90vh;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.video-container {
+  width: 100%;
+  height: 100%;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-modal.active {
+  display: flex;
+}
+
+.gallery-modal-content {
+  width: 90%;
+  max-width: 800px;
+  background: var(--white);
+  border-radius: 10px;
+  position: relative;
+  padding: 20px;
+}
+
+.gallery-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: var(--primary);
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.gallery-images {
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+
+.gallery-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.8);
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.gallery-nav.prev {
+  left: 10px;
+}
+
+.gallery-nav.next {
+  right: 10px;
+}
+
+.gallery-info {
+  color: var(--primary);
+}
+
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  background-color: #128C7E;
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+  <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#02132A"/>
+    <text x="50" y="70" text-anchor="middle" fill="#03CDBA" font-size="50">ML</text>
+  </svg>
+  <nav class="nav">
+    <a href="#inicio">Inicio</a>
+    <a href="#branding">Branding</a>
+    <a href="#diseno">Diseño</a>
+    <a href="#video">Video</a>
+    <a href="#fotografia">Fotografía</a>
+    <a href="#social">Social Media</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<section class="hero" id="inicio">
+  <img src="https://images.pexels.com/photos/8102680/pexels-photo-8102680.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="abstract creative background, modern design" class="hero-video">
+  <div class="hero-content">
+    <h1>Malelemdz</h1>
+    <p>Creador de contenido digital</p>
+  </div>
+</section>
+
+<section class="portfolio-section" id="branding">
+  <h2 class="section-title">Branding</h2>
+  <div class="portfolio-grid">
+    <div class="portfolio-item" data-gallery='["https://example.com/project1-1.jpg", "https://example.com/project1-2.jpg", "https://example.com/project1-3.jpg"]'>
+      <div class="portfolio-img">
+        <img src="source/images/tumbnail1.jpg" alt="Project thumbnail" width="477" height="318">
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Marca Personal</h3>
+        <p>Desarrollo completo de identidad visual</p>
+      </div>
+    </div>
+    <div class="portfolio-item" data-gallery='["https://example.com/project2-1.jpg", "https://example.com/project2-2.jpg", "https://example.com/project2-3.jpg"]'>
+      <div class="portfolio-img">
+        <img src="https://example.com/thumbnail2.jpg" alt="Project thumbnail" width="300" height="250">
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Restaurante Local</h3>
+        <p>Rebranding completo</p>
+      </div>
+    </div>
+    <div class="portfolio-item" data-gallery='["https://example.com/project3-1.jpg", "https://example.com/project3-2.jpg", "https://example.com/project3-3.jpg"]'>
+      <div class="portfolio-img">
+        <img src="https://example.com/thumbnail3.jpg" alt="Project thumbnail" width="300" height="250">
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Startup Tech</h3>
+        <p>Diseño de marca desde cero</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio-section" id="diseno">
+  <h2 class="section-title">Diseño para Redes Sociales</h2>
+  <div class="portfolio-grid">
+    <div class="portfolio-item" data-gallery='["https://example.com/project4-1.jpg", "https://example.com/project4-2.jpg", "https://example.com/project4-3.jpg"]'>
+      <div class="portfolio-img">
+        <img src="https://example.com/thumbnail4.jpg" alt="Project thumbnail" width="300" height="250">
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Campaña Verano</h3>
+        <p>Serie de posts para Instagram</p>
+      </div>
+    </div>
+    <div class="portfolio-item" data-gallery='["https://example.com/project5-1.jpg", "https://example.com/project5-2.jpg", "https://example.com/project5-3.jpg"]'>
+      <div class="portfolio-img">
+        <img src="https://example.com/thumbnail5.jpg" alt="Project thumbnail" width="300" height="250">
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Contenido Digital</h3>
+        <p>Feed completo de marca</p>
+      </div>
+    </div>
+    <div class="portfolio-item" data-gallery='["https://example.com/project6-1.jpg", "https://example.com/project6-2.jpg", "https://example.com/project6-3.jpg"]'>
+      <div class="portfolio-img">
+        <img src="https://example.com/thumbnail6.jpg" alt="Project thumbnail" width="300" height="250">
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Stories Highlights</h3>
+        <p>Diseño de covers e historias</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio-section" id="video">
+  <h2 class="section-title">Edicón de Video</h2>
+  <div class="portfolio-grid">
+    <div class="portfolio-item" data-video="https://example.com/video1.mp4">
+      <div class="portfolio-img">
+		<img src="https://example.com/thumbnail6.jpg" alt="Project thumbnail" width="300" height="250">
+		</div>
+      <div class="portfolio-overlay">
+        <h3>Cortometraje</h3>
+        <p>Producción de un corto creativo</p>
+      </div>
+    </div>
+    <div class="portfolio-item" data-video="https://example.com/video2.mp4">
+      <div class="portfolio-img">
+		<img src="https://example.com/thumbnail6.jpg" alt="Project thumbnail" width="300" height="250">
+		</div>
+      <div class="portfolio-overlay">
+        <h3>Vlog de Viaje</h3>
+        <p>Documentación de una aventura</p>
+      </div>
+    </div>
+    <div class="portfolio-item" data-video="https://example.com/video3.mp4">
+      <div class="portfolio-img">
+		<img src="https://example.com/thumbnail6.jpg" alt="Project thumbnail" width="300" height="250"></div>
+      <div class="portfolio-overlay">
+        <h3>Video Corporativo</h3>
+        <p>Presentación de empresa</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio-section" id="fotografia">
+  <h2 class="section-title">Fotografía</h2>
+  <div class="portfolio-grid">
+    <div class="portfolio-item" data-gallery='["https://example.com/project7-1.jpg", "https://example.com/project7-2.jpg", "https://example.com/project7-3.jpg"]'>
+      <div class="portfolio-img">
+        <img src="https://example.com/thumbnail7.jpg" alt="Project thumbnail" width="300" height="250">
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Sesiones de Retrato</h3>
+        <p>Fotografía profesional de retrato</p>
+      </div>
+    </div>
+    <div class="portfolio-item" data-gallery='["https://example.com/project8-1.jpg", "https://example.com/project8-2.jpg", "https://example.com/project8-3.jpg"]'>
+      <div class="portfolio-img">
+        <img src="https://raw.githubusercontent.com/olivermalele/malelemdz/refs/heads/main/source/images/thumbnail1.jpg" alt="Project thumbnail" width="300" height="250">
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Eventos</h3>
+        <p>Documentación de eventos especiales</p>
+      </div>
+    </div>
+    <div class="portfolio-item" data-gallery='["https://example.com/project9-1.jpg", "https://example.com/project9-2.jpg", "https://example.com/project9-3.jpg"]'>
+      <div class="portfolio-img">
+        <img src="https://example.com/thumbnail9.jpg" alt="Project thumbnail" width="300" height="250">
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Fotografía de Producto</h3>
+        <p>Imágenes atractivas para marcas</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio-section" id="social">
+  <h2 class="section-title">Social Media</h2>
+  <div class="portfolio-grid">
+    <div class="portfolio-item" data-gallery='["https://example.com/project10-1.jpg", "https://example.com/project10-2.jpg", "https://example.com/project10-3.jpg"]'>
+      <div class="portfolio-img">
+        <img src="https://example.com/thumbnail10.jpg" alt="Project thumbnail" width="300" height="250">
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Campaña de Lanzamiento</h3>
+        <p>Estrategia para redes sociales</p>
+      </div>
+    </div>
+    <div class="portfolio-item" data-gallery='["https://example.com/project11-1.jpg", "https://example.com/project11-2.jpg", "https://example.com/project11-3.jpg"]'>
+      <div class="portfolio-img">
+        <img src="https://example.com/thumbnail11.jpg" alt="Project thumbnail" width="300" height="250">
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Gestión de Redes</h3>
+        <p>Fomento de la presencia online</p>
+      </div>
+    </div>
+    <div class="portfolio-item" data-gallery='["https://example.com/project12-1.jpg", "https://example.com/project12-2.jpg", "https://example.com/project12-3.jpg"]'>
+      <div class="portfolio-img">
+        <img src="https://example.com/thumbnail12.jpg" alt="Project thumbnail" width="300" height="250">
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Analytics y Reportes</h3>
+        <p>Medición del impacto en redes</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <h2>¿Trabajamos juntos?</h2>
+  <p>Contacta conmigo para dar vida a tu próximo proyecto</p>
+  <form class="contact-form">
+    <div class="form-group">
+      <input type="text" id="name" name="name" required placeholder="Nombre completo">
+    </div>
+    <div class="form-group">
+      <input type="email" id="email" name="email" required placeholder="Correo electrónico">
+    </div>
+    <div class="form-group">
+      <input type="tel" id="whatsapp" name="whatsapp" required placeholder="WhatsApp">
+    </div>
+    <div class="form-group">
+      <select id="service" name="service" required>
+        <option value="">Selecciona un servicio</option>
+        <option value="branding">Branding</option>
+        <option value="diseno">Diseño para Redes Sociales</option>
+        <option value="video">Edición de Video</option>
+        <option value="fotografia">Fotografía</option>
+        <option value="social">Social Media</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <textarea id="message" name="message" required placeholder="Cuéntame sobre tu proyecto"></textarea>
+    </div>
+    <button type="submit" class="submit-btn">Enviar mensaje</button>
+  </form>
+</section>
+
+<footer class="footer">
+  <div class="social-links">
+    <a href="https://tiktok.com/@malelemdz" target="_blank">
+      <svg class="social-icon" viewBox="0 0 24 24">
+        <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 015.2-1.74V11h3.45a4.83 4.83 0 003.77 3.73v-8.04z"/>
+      </svg>
+    </a>
+    <a href="https://instagram.com/malelemdz" target="_blank">
+      <svg class="social-icon" viewBox="0 0 24 24">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+    </a>
+    <a href="https://facebook.com/malelemdz" target="_blank">
+      <svg class="social-icon" viewBox="0 0 24 24">
+        <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+      </svg>
+    </a>
+    <a href="https://youtube.com/@malelemdz" target="_blank">
+      <svg class="social-icon" viewBox="0 0 24 24">
+        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+      </svg>
+    </a>
+  </div>
+  <div class="copyright">
+    <p>&copy; 2023 Malelemdz. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<div class="modal">
+  <div class="modal-content">
+    <span class="modal-close">&times;</span>
+    <div class="video-container">
+      <video controls>
+        <source src="" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</div>
+
+<div class="gallery-modal">
+  <div class="gallery-modal-content">
+    <span class="gallery-modal-close">&times;</span>
+    <div class="gallery-container">
+      <button class="gallery-nav prev">&lt;</button>
+      <button class="gallery-nav next">&gt;</button>
+      <div class="gallery-images">
+        <img src="" alt="Gallery image">
+      </div>
+      <div class="gallery-info">
+        <h3></h3>
+        <p></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a href="https://wa.me/YOURNUMBERHERE" target="_blank" class="whatsapp-float">
+  <svg viewBox="0 0 24 24" fill="white" width="35" height="35">
+    <path d="M12.01 2.019c-5.5 0-9.976 4.465-9.976 9.958 0 1.836.493 3.645 1.438 5.249l-1.462 4.776 4.901-1.434a9.912 9.912 0 0 0 5.1 1.459c5.5 0 9.977-4.464 9.977-9.958S17.51 2.019 12.01 2.019zm5.893 9.958c0-3.246-2.637-5.885-5.884-5.885s-5.884 2.639-5.884 5.885c0 1.066.283 2.109.82 3.025l-.536 1.74 1.791-.523a5.86 5.86 0 0 0 3.81 1.36c3.247 0 5.884-2.639 5.884-5.885zm-5.884-3.909c.649 0 1.18.531 1.18 1.18 0 .648-.531 1.18-1.18 1.18a1.182 1.182 0 0 1-1.18-1.18c0-.649.531-1.18 1.18-1.18zm-3.909 3.909c0-.649.531-1.18 1.18-1.18s1.18.531 1.18 1.18a1.182 1.182 0 0 1-1.18 1.18 1.182 1.182 0 0 1-1.18-1.18zm6.697 1.18c-.648 0-1.18-.531-1.18-1.18 0-.649.532-1.18 1.18-1.18.649 0 1.18.531 1.18 1.18 0 .649-.531 1.18-1.18 1.18z"/>
+  </svg>
+</a>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+const modal = document.querySelector('.modal');
+const modalVideo = modal.querySelector('video');
+const modalClose = modal.querySelector('.modal-close');
+
+document.querySelectorAll('#video .portfolio-item').forEach(item => {
+  item.addEventListener('click', function() {
+    const videoUrl = this.dataset.video;
+    modalVideo.src = videoUrl;
+    modal.classList.add('active');
+  });
+});
+
+modalClose.addEventListener('click', () => {
+  modal.classList.remove('active');
+  modalVideo.pause();
+  modalVideo.src = '';
+});
+
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.classList.remove('active');
+    modalVideo.pause();
+    modalVideo.src = '';
+  }
+});
+
+const galleryModal = document.querySelector('.gallery-modal');
+const galleryImg = galleryModal.querySelector('img');
+const galleryTitle = galleryModal.querySelector('h3');
+const galleryDesc = galleryModal.querySelector('p');
+const galleryClose = galleryModal.querySelector('.gallery-modal-close');
+const prevBtn = galleryModal.querySelector('.prev');
+const nextBtn = galleryModal.querySelector('.next');
+
+let currentImages = [];
+let currentImageIndex = 0;
+
+// Add click handlers for non-video portfolio items
+document.querySelectorAll('#branding .portfolio-item, #diseno .portfolio-item, #fotografia .portfolio-item, #social .portfolio-item').forEach(item => {
+  item.addEventListener('click', function() {
+    const title = this.querySelector('h3').textContent;
+    const desc = this.querySelector('p').textContent;
+    currentImages = JSON.parse(this.dataset.gallery);
+    currentImageIndex = 0;
+    
+    showCurrentImage();
+    galleryTitle.textContent = title;
+    galleryDesc.textContent = desc;
+    galleryModal.classList.add('active');
+  });
+});
+
+function showCurrentImage() {
+  galleryImg.src = currentImages[currentImageIndex];
+  galleryImg.alt = `Gallery image ${currentImageIndex + 1}`;
+  updateNavigationButtons();
+}
+
+function updateNavigationButtons() {
+  prevBtn.style.display = currentImageIndex > 0 ? 'block' : 'none';
+  nextBtn.style.display = currentImageIndex < currentImages.length - 1 ? 'block' : 'none';
+}
+
+prevBtn.addEventListener('click', () => {
+  if (currentImageIndex > 0) {
+    currentImageIndex--;
+    showCurrentImage();
+  }
+});
+
+nextBtn.addEventListener('click', () => {
+  if (currentImageIndex < currentImages.length - 1) {
+    currentImageIndex++;
+    showCurrentImage();
+  }
+});
+
+// Existing close handlers remain the same
+galleryClose.addEventListener('click', () => {
+  galleryModal.classList.remove('active');
+});
+
+galleryModal.addEventListener('click', (e) => {
+  if (e.target === galleryModal) {
+    galleryModal.classList.remove('active');
+  }
+});
+
+// Form handling
+const contactForm = document.querySelector('.contact-form');
+contactForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const formData = new FormData(this);
+  console.log('Form submitted:', Object.fromEntries(formData));
+  alert('¡Gracias! Tu mensaje ha sido enviado.');
+  this.reset();
+});
+</script>
+
+</body>
+</html>
